@@ -1,0 +1,4 @@
+<h2>Login</h2>
+<input name="email" [(ngModel)]="email" type="email">
+<input name="password" type="password" [(ngModel)]="password">
+<button [disabled]="!isButtonEnabled" (click)="doLogin()">Login</button>

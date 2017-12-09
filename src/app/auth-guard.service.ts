@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
@@ -14,8 +12,10 @@ export class AuthGuardService implements CanActivate {
    
   }
 
-  canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot  ) {
-    return this.userService.isUserLoggedIn;
+  canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): Promise<boolean> {
+    return this.userService.getCurrentUser().then((_) => {
+      return this.userService.isUserLoggedIn;
+    });
   }
 
 }

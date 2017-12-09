@@ -2,10 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService, UserDAO, UserServiceEventKeys } from './user.service';
 import { BroadcasterService } from './broadcaster.service';
-
-declare var require: any;
-
-const Autobind = require('core-decorators').autobind;
+import { Autobind } from './app.helper';
 
 @Component({
   selector: 'app-root',

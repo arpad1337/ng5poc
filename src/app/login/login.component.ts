@@ -8,21 +8,32 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  isButtonEnabled = true;
-  email: string;
-  password: string;
+  email: string = '';
+  password: string = '';
+  buttonEnabled = true;
 
   constructor( private userService: UserService ) {
     
   }
 
+  get isEntryValid(): boolean {
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test( this.email ) && this.password.length >= 3;
+  }
+
+  get isButtonEnabled() {
+    return this.buttonEnabled && this.isEntryValid;
+  }
+
   ngOnInit( ) {
   }
 
-  async doLogin() {
-    this.isButtonEnabled = false;
-    await this.userService.login( this.email, this.password );
-    this.isButtonEnabled = true;
+  doLogin() {
+    this.buttonEnabled = false;
+    setTimeout(() => {
+      this.userService.login( this.email, this.password );
+      this.buttonEnabled = true;
+    }, 1000);
   }
 
 }

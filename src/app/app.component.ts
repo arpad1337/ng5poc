@@ -30,7 +30,6 @@ export class AppComponent {
   @Autobind
   onUserLogin( user ) {
     this.currentUser = user;
-    this.router.navigate(['/dashboard']);
   }
 
   @Autobind

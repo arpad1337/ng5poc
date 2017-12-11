@@ -1,0 +1,13 @@
+{
+    "name": "@neticlecharts",
+    "version": "1.0.0",
+    "description": "Neticle Labs Charting Library",
+    "main": "./index.js",
+    "typings": "./index.d.ts",
+    "author": "@rpi1337",
+    "license": "MIT",
+    "dependencies": {
+        "highcharts": "^6.0.3"       
+    }
+  }
+  

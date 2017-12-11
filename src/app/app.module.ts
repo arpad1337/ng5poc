@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+import { ChartModule } from './chart/chart.module';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -25,10 +27,11 @@ import { BroadcasterService } from './broadcaster.service';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ChartModule,
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: '/dahsboard',
+        redirectTo: '/dashboard',
         pathMatch: 'full'
       },
       {
@@ -52,7 +55,7 @@ import { BroadcasterService } from './broadcaster.service';
     APIService,
     UserService,
     BroadcasterService,
-    AuthGuardService
+    AuthGuardService,
   ],
   bootstrap: [AppComponent]
 })

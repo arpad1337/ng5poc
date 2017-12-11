@@ -2467,6 +2467,10 @@ he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
+highcharts@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-6.0.3.tgz#51348a0c97d8bdc87cb3b273460e3751db4a51cd"
+
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"

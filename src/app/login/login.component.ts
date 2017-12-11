@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   buttonEnabled = true;
 
-  constructor( private userService: UserService ) {
+  constructor( private userService: UserService, private router: Router ) {
     
   }
 
@@ -31,7 +32,9 @@ export class LoginComponent implements OnInit {
   doLogin() {
     this.buttonEnabled = false;
     setTimeout(() => {
-      this.userService.login( this.email, this.password );
+      this.userService.login( this.email, this.password ).then(() => {
+        this.router.navigate(['/dashboard']);
+      });
       this.buttonEnabled = true;
     }, 1000);
   }

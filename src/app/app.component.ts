@@ -11,7 +11,6 @@ import { Autobind } from './app.helper';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'app';
   currentUser: UserDAO = null;
   constructor( 
     private userService: UserService, 

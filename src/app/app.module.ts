@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { ChartModule } from './chart/chart.module';
@@ -15,6 +15,9 @@ import { AuthGuardService  } from './auth-guard.service';
 import { APIService } from './api.service';
 import { UserService } from './user.service';
 import { BroadcasterService } from './broadcaster.service';
+import { LocalStorageRefService } from './local-storage-ref.service';
+
+import { APIInterceptor } from './api.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import { BroadcasterService } from './broadcaster.service';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     ChartModule,
     RouterModule.forRoot([
@@ -56,6 +59,17 @@ import { BroadcasterService } from './broadcaster.service';
     UserService,
     BroadcasterService,
     AuthGuardService,
+    { 
+      provide: LocalStorageRefService,
+      useFactory() {
+        return LocalStorageRefService.createRef( window.localStorage );
+      }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: APIInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

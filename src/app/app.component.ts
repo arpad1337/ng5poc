@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService, UserDAO, UserServiceEventKeys } from './user.service';
 import { BroadcasterService } from './broadcaster.service';
+import { APIService } from './api.service';
 import { Autobind } from './app.helper';
 
 @Component({
@@ -10,20 +11,29 @@ import { Autobind } from './app.helper';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   currentUser: UserDAO = null;
+  
   constructor( 
     private userService: UserService, 
-    private broadCaster: BroadcasterService, 
-    private router: Router
+    private broadcaster: BroadcasterService, 
+    private router: Router,
+    private apiService: APIService
   ) {
-    this.broadCaster
+    this.broadcaster
       .on<UserServiceEventKeys>(UserServiceEventKeys.USER_LOGIN)
       .subscribe(this.onUserLogin);
-    this.broadCaster
+    this.broadcaster
       .on<UserServiceEventKeys>(UserServiceEventKeys.USER_LOGOUT)
       .subscribe(this.onUserLogout);
     this.userService.getCurrentUser();
+  }
+
+  ngOnInit() {
+    this.apiService.echo().then((r) => {
+      console.log('DONE');
+    });
   }
 
   @Autobind

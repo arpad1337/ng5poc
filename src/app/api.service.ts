@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/toPromise'
 
 @Injectable()
 export class APIService {
 
-  constructor( private http: Http ) { }
+  constructor( private httpClient: HttpClient ) { 
+
+  }
+
+  echo(): Promise<any> {
+    return this.httpClient.get('/assets/dummy.json').toPromise();
+  }
 
 }

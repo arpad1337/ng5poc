@@ -9,5 +9,6 @@ Angular 5 Proof on Concept, starter kit
 - APIService Compositor for HttpClient
 - LocalStorageRef for internal KV storage
 - Charting module with HighChartsRef
+- Dynamic Chart Factory service
 - YARN, Webpack, TSConfig, Angular CLI
 

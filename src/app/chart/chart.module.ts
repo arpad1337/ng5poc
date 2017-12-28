@@ -16,6 +16,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     }
   }],
   declarations: [ PieChartComponent ],
+  entryComponents: [ PieChartComponent ],  
   exports: [
     PieChartComponent
   ]

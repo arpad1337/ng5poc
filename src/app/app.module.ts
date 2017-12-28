@@ -5,7 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { ChartModule } from './chart/chart.module';
-
+import { PieChartComponent} from './chart/pie-chart/pie-chart.component';
+ 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -16,6 +17,7 @@ import { APIService } from './api.service';
 import { UserService } from './user.service';
 import { BroadcasterService } from './broadcaster.service';
 import { LocalStorageRefService } from './local-storage-ref.service';
+import { DynamicChartFactoryService } from './dynamic-chart-factory.service';
 
 import { APIInterceptor } from './api.interceptor';
 
@@ -69,7 +71,8 @@ import { APIInterceptor } from './api.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
       multi: true
-    }
+    },
+    DynamicChartFactoryService
   ],
   bootstrap: [AppComponent]
 })

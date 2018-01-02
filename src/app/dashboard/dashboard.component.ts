@@ -3,6 +3,8 @@ import { DynamicChartFactoryService } from '../dynamic-chart-factory.service';
 
 import { PieChartComponent } from '../chart/pie-chart/pie-chart.component';
 
+import { Debounce } from '../app.helper';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -80,23 +82,28 @@ export class DashboardComponent implements AfterViewInit {
         const component: ComponentRef<PieChartComponent> = this.chartFactory.createComponentInHostView( PieChartComponent, this.viewContainerRef );
         component.instance.chartConfig = this.chartConfig;
         console.log(this.chartConfig);
-        setTimeout(() => {
-            this.data = this.data.map((row) => {
-                if( row.name == 'IE' ) {
-                    row.y -= 10;
-                }
-                if( row.name == 'Chrome' ) {
-                    row.y += 10;
-                } 
-                return row;
-            });
-            this.chartConfig.series.data = this.data;
-            component.instance.chartConfig = this.chartConfig;
-            setTimeout(() => {
-                component.destroy();
-            }, 20000);
+        this.changeConfig( component );
+    }
 
-        }, 10000);
+    @Debounce(10000)
+    changeConfig( component: ComponentRef<any> ) {
+        this.data = this.data.map((row) => {
+            if( row.name == 'IE' ) {
+                row.y -= 10;
+            }
+            if( row.name == 'Chrome' ) {
+                row.y += 10;
+            } 
+            return row;
+        });
+        this.chartConfig.series.data = this.data;
+        component.instance.chartConfig = this.chartConfig;
+        this.destroyComponent( component );
+    }
+
+    @Debounce( 10000 )
+    destroyComponent( component: ComponentRef<any> ) {
+        component.destroy();
     }
 
 }

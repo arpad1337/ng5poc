@@ -3,7 +3,7 @@ import { HighchartsRefService } from '../highcharts-ref.service';
 
 export class ChartAbstractComponent implements AfterContentInit {
 
-  @Input() chartConfig: any; 
+  _chartConfig: any; 
 
   private highchartsRef: HighchartsRefService;
   private elementRef: ElementRef;
@@ -17,8 +17,17 @@ export class ChartAbstractComponent implements AfterContentInit {
   }
 
   ngAfterContentInit() {
+    this.render();
+  }
+
+  @Input() set chartConfig( value: any ) {
+    this._chartConfig = value;
+    this.render();
+  }
+
+  render() {
     const element = this.elementRef.nativeElement;
-    this.highchartsRef.lib.chart( element, this.chartConfig );
+    this.highchartsRef.lib.chart( element, this._chartConfig );
   }
 
 }

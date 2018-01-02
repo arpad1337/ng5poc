@@ -11,6 +11,7 @@ import { PieChartComponent } from '../chart/pie-chart/pie-chart.component';
 export class DashboardComponent implements AfterViewInit {
 
     chartConfig: any;
+    data: Array<any>;
 
     @ViewChild('dynamic', { 
         read: ViewContainerRef 
@@ -19,6 +20,27 @@ export class DashboardComponent implements AfterViewInit {
     constructor( 
       private chartFactory: DynamicChartFactoryService
     ) { 
+        this.data = [{
+            name: 'IE',
+            y: 56.33
+        }, {
+            name: 'Chrome',
+            y: 24.03,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Firefox',
+            y: 10.38
+        }, {
+            name: 'Safari',
+            y: 4.77
+        }, {
+            name: 'Opera',
+            y: 0.91
+        }, {
+            name: 'Other',
+            y: 0.2
+        }];
         this.chartConfig = {
             chart: {
                 plotBackgroundColor: null,
@@ -48,27 +70,7 @@ export class DashboardComponent implements AfterViewInit {
             series: [{
                 name: 'Brands',
                 colorByPoint: true,
-                data: [{
-                    name: 'IE',
-                    y: 56.33
-                }, {
-                    name: 'Chrome',
-                    y: 24.03,
-                    sliced: true,
-                    selected: true
-                }, {
-                    name: 'Firefox',
-                    y: 10.38
-                }, {
-                    name: 'Safari',
-                    y: 4.77
-                }, {
-                    name: 'Opera',
-                    y: 0.91
-                }, {
-                    name: 'Other',
-                    y: 0.2
-                }]
+                data: this.data
             }]
         };
 
@@ -77,8 +79,23 @@ export class DashboardComponent implements AfterViewInit {
     ngAfterViewInit() {
         const component: ComponentRef<PieChartComponent> = this.chartFactory.createComponentInHostView( PieChartComponent, this.viewContainerRef );
         component.instance.chartConfig = this.chartConfig;
+        console.log(this.chartConfig);
         setTimeout(() => {
-            component.destroy();
+            this.data = this.data.map((row) => {
+                if( row.name == 'IE' ) {
+                    row.y -= 10;
+                }
+                if( row.name == 'Chrome' ) {
+                    row.y += 10;
+                } 
+                return row;
+            });
+            this.chartConfig.series.data = this.data;
+            component.instance.chartConfig = this.chartConfig;
+            setTimeout(() => {
+                component.destroy();
+            }, 20000);
+
         }, 10000);
     }
 

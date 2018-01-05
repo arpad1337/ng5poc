@@ -10,10 +10,10 @@ export interface UserDAO {
   name: string;
 }
 
-export enum UserServiceEventKeys {
-  USER_LOGIN,
-  USER_LOGOUT
-}
+export const UserServiceEventKeys = {
+  USER_LOGIN: 'USER_LOGIN',
+  USER_LOGOUT: 'USER_LOGOUT'
+};
 
 @Injectable()
 export class UserService {

@@ -22,10 +22,10 @@ export class AppComponent implements OnInit {
     private apiService: APIService
   ) {
     this.broadcaster
-      .on<UserServiceEventKeys>(UserServiceEventKeys.USER_LOGIN)
+      .on(UserServiceEventKeys.USER_LOGIN)
       .subscribe(this.onUserLogin);
     this.broadcaster
-      .on<UserServiceEventKeys>(UserServiceEventKeys.USER_LOGOUT)
+      .on(UserServiceEventKeys.USER_LOGOUT)
       .subscribe(this.onUserLogout);
     this.userService.getCurrentUser();
   }

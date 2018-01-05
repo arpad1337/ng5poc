@@ -85,7 +85,7 @@ export class DashboardComponent implements AfterViewInit {
         this.changeConfig( component );
     }
 
-    @Debounce(10000)
+    @Debounce( 10000 )
     changeConfig( component: ComponentRef<any> ) {
         this.data = this.data.map((row) => {
             if( row.name == 'IE' ) {

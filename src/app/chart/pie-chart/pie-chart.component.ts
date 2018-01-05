@@ -8,16 +8,19 @@ import { HighchartsRefService } from '../highcharts-ref.service';
 })
 export class PieChartComponent extends ChartAbstractComponent {
 
+  protected highchartsRef: HighchartsRefService;
+
   constructor(
     highchartsRef: HighchartsRefService,
     elementRef: ElementRef
   ) {
-    super( highchartsRef, elementRef );
+    super( elementRef );
+    this.highchartsRef = highchartsRef;
   }
 
-  ngAfterContentInit() {
-    console.log('View rendered');
-    super.ngAfterContentInit();
+  render() {
+    const element = this.elementRef.nativeElement;
+    this.highchartsRef.lib.chart( element, this.chartConfig );
   }
 
 }

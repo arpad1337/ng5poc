@@ -3,16 +3,12 @@ import { HighchartsRefService } from '../highcharts-ref.service';
 
 export class ChartAbstractComponent implements AfterContentInit {
 
-  _chartConfig: any; 
-
-  private highchartsRef: HighchartsRefService;
-  private elementRef: ElementRef;
+  protected _chartConfig: any; 
+  public elementRef: ElementRef;
 
   constructor(
-    highchartsRef: HighchartsRefService,
     elementRef: ElementRef
   ) {
-    this.highchartsRef = highchartsRef;
     this.elementRef = elementRef;
   }
 
@@ -25,9 +21,12 @@ export class ChartAbstractComponent implements AfterContentInit {
     this.render();
   }
 
+  get chartConfig() {
+    return this._chartConfig;
+  }
+
   render() {
-    const element = this.elementRef.nativeElement;
-    this.highchartsRef.lib.chart( element, this._chartConfig );
+    
   }
 
 }

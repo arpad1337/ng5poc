@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewContainerRef, ViewChild, ComponentRef } from '@angular/core';
 import { DynamicChartFactoryService } from '../dynamic-chart-factory.service';
+import { ModalService } from '../modal/modal.service';
 
 import { PieChartComponent } from '../chart/pie-chart/pie-chart.component';
 
@@ -20,7 +21,8 @@ export class DashboardComponent implements AfterViewInit {
     }) viewContainerRef: ViewContainerRef
 
     constructor( 
-      private chartFactory: DynamicChartFactoryService
+      private chartFactory: DynamicChartFactoryService,
+      private modalService: ModalService
     ) { 
         this.data = [{
             name: 'IE',
@@ -110,6 +112,19 @@ export class DashboardComponent implements AfterViewInit {
     @Debounce( 10000 )
     destroyComponent( component: ComponentRef<any> ) {
         component.destroy();
+    }
+
+    showModal() {
+        const viewModel = this.modalService.createModal('test', {
+            message: 'BOOOOOO'
+        });
+        viewModel.getEventBus().subscribe((event) => {
+            console.log('EVENT FROM MODAL', event);
+        });
+
+        setTimeout(() => {
+            viewModel.close();
+        }, 10000);
     }
 
 }

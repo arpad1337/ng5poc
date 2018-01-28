@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 
 import { ChartModule } from './chart/chart.module';
 import { PieChartComponent} from './chart/pie-chart/pie-chart.component';
+
+import { ModalModule } from './modal/modal.module';
+import { TestModalComponent } from './test-modal/test-modal.component';
  
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -26,7 +29,8 @@ import { APIInterceptor } from './api.interceptor';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TestModalComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,13 @@ import { APIInterceptor } from './api.interceptor';
       }
     ],{
       enableTracing: true
-    })
+    }),
+    ModalModule.forRoot([
+      {
+        key: 'test',
+        component: TestModalComponent
+      }
+    ])
   ],
   providers: [
     APIService,
@@ -73,6 +83,9 @@ import { APIInterceptor } from './api.interceptor';
       multi: true
     },
     DynamicChartFactoryService
+  ],
+  entryComponents: [
+    TestModalComponent
   ],
   bootstrap: [AppComponent]
 })

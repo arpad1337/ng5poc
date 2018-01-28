@@ -1,3 +1,6 @@
 {
-    "foo": "bar"
+    "foo": "bar",
+    "authResponse": {
+        "accessToken": "ABCD1234"
+    }
 }

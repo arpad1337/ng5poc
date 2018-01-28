@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 
 export interface PersistentKVStorage {
-  setItem: ( key: string, value: string ) => any;
+  setItem: ( key: string, value: string ) => void;
   getItem: ( key: string ) => string;
 }
 
 export class MockKVStore implements PersistentKVStorage {
-  cache = {};
-  setItem( k: string, v: string ) {
-    this.cache[k] = v;
+  cache: Map<string, string>;
+  constructor() {
+    this.cache = new Map<string, string>();
+  }
+  setItem( k: string, v: string ): void {
+    this.cache.set(k, v);
   }
   getItem( k: string ): string { 
-    return this.cache[k];
+    return this.cache.get(k);
   }
 }
 
@@ -22,7 +25,7 @@ export class LocalStorageRefService {
     this.driver = driver;
   }
 
-  setItem( key: string, value: any ) {
+  setItem( key: string, value: any ): void {
     this.driver.setItem( key, JSON.stringify( value ) );
   }
 
@@ -30,7 +33,7 @@ export class LocalStorageRefService {
     return JSON.parse(this.driver.getItem( key ));
   }
 
-  hasKey( key: string ) {
+  hasKey( key: string ): boolean {
     return !!this.getItem(key);
   }
 

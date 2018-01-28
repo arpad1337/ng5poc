@@ -33,6 +33,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.apiService.echo().then((r) => {
       console.log('DONE');
+      return this.apiService.echo();
+    }).then(() => {
+      console.log('CALLED TWICE')
     });
   }
 

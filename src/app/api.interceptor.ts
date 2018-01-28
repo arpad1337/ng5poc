@@ -1,5 +1,7 @@
 import { Injectable, Injector, Inject } from '@angular/core';
 import { LocalStorageRefService } from './local-storage-ref.service';
+import { BroadcasterService } from './broadcaster.service';
+import { UserServiceEventKeys } from './user.service';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpResponse, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/do';
@@ -8,7 +10,7 @@ import 'rxjs/add/operator/catch';
 
 export class APIInterceptor implements HttpInterceptor {
 
-    constructor( @Inject(LocalStorageRefService) private storage: LocalStorageRefService ) {
+    constructor( @Inject(LocalStorageRefService) private storage: LocalStorageRefService, @Inject(BroadcasterService) private broadcaster: BroadcasterService ) {
 
     }
 
@@ -17,7 +19,7 @@ export class APIInterceptor implements HttpInterceptor {
         let clone: HttpRequest<any> = req.clone({
             setHeaders: { 'X-APP': 'RPI-NG5POC' }
         });
-        if( this.storage.getItem('ACCESS_TOKEN') ) {
+        if( this.storage.hasKey('ACCESS_TOKEN') ) {
             const token = this.storage.getItem('ACCESS_TOKEN');
             clone = clone.clone({
                 setHeaders: { 'Authorization': `Bearer ${token}` }
@@ -38,6 +40,7 @@ export class APIInterceptor implements HttpInterceptor {
                 console.error('Response Error', err);
                 if( err.status == 401 ) {
                     this.storage.setItem('ACCESS_TOKEN', null);
+                    this.broadcaster.emit(UserServiceEventKeys.USER_LOGOUT);
                 }
                 return Observable.throw(err);
             });

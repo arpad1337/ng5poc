@@ -30,6 +30,10 @@ export class LocalStorageRefService {
     return JSON.parse(this.driver.getItem( key ));
   }
 
+  hasKey( key: string ) {
+    return !!this.getItem(key);
+  }
+
   static createRef( driver?: any ): LocalStorageRefService {
     if( !driver ) {
       driver = new MockKVStore();

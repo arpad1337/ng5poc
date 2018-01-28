@@ -16,7 +16,7 @@ export class DashboardComponent implements AfterViewInit {
     data: Array<any>;
 
     @ViewChild('dynamic', { 
-        read: ViewContainerRef 
+        read: ViewContainerRef
     }) viewContainerRef: ViewContainerRef
 
     constructor( 
@@ -82,6 +82,12 @@ export class DashboardComponent implements AfterViewInit {
         const component: ComponentRef<PieChartComponent> = this.chartFactory.createComponentInHostView( PieChartComponent, this.viewContainerRef );
         component.instance.chartConfig = this.chartConfig;
         console.log(this.chartConfig);
+        const component2 = this.chartFactory.createComponentInHostView( PieChartComponent, this.viewContainerRef );
+        component2.instance.chartConfig = this.chartConfig;
+        setTimeout(() => {
+            this.destroyComponent( component2 );
+
+        }, 5000)
         this.changeConfig( component );
     }
 

@@ -69,6 +69,12 @@ export class ModalComponent {
       key: ModalEventKey.MODAL_CLOSED
     });
   }
+  dismiss( payload? ) {
+    this.viewModel.emit({
+      key: ModalEventKey.MODAL_DISMISSED,
+      payload: payload
+    });
+  }
 }
 
 export interface ModalComponentDescriptor {

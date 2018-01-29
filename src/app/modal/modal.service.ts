@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 type Constructor<T> = {
   new(...args: any[]): T; // any number and type of arguments
@@ -51,7 +52,7 @@ export class ModalViewModel {
 
 }
 
-export class ModalComponent {
+export class ModalComponent implements AfterViewInit {
   _viewModel: ModalViewModel;
   get viewModel() {
     return this._viewModel;
@@ -73,6 +74,12 @@ export class ModalComponent {
     this.viewModel.emit({
       key: ModalEventKey.MODAL_DISMISSED,
       payload: payload
+    });
+  }
+
+  ngAfterViewInit() {
+    this.viewModel.emit({
+      key: ModalEventKey.MODAL_OPENED
     });
   }
 }

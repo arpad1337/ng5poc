@@ -20,6 +20,9 @@ export class ModalOutletComponent implements AfterViewInit {
     this.modalQueue = [];
     this.modalService.getModalBus().subscribe((descriptor) => {
       this.modalQueue.push( descriptor );
+      if( !this.currentModal ) {
+        this.showNext();
+      }
     });
   }
 
@@ -50,10 +53,5 @@ export class ModalOutletComponent implements AfterViewInit {
     this.containerRef.clear();
     this.containerRef.insert( component.hostView );
     this.currentModal = component;
-    setTimeout(() => {
-      descriptor.viewModel.emit({
-        key: ModalEventKey.MODAL_OPENED
-      });
-    }, 100);
   }
 }

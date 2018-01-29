@@ -53,5 +53,10 @@ export class ModalOutletComponent implements AfterViewInit {
     this.containerRef.clear();
     this.containerRef.insert( component.hostView );
     this.currentModal = component;
+    setTimeout(() => {
+      descriptor.viewModel.emit({
+        key: ModalEventKey.MODAL_OPENED
+      });
+    }, 100);
   }
 }

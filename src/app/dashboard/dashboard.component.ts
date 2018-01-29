@@ -114,9 +114,11 @@ export class DashboardComponent implements AfterViewInit {
         component.destroy();
     }
 
+
+    modalCount = 1;
     showModal() {
         const viewModel = this.modalService.createModal('test', {
-            message: 'BOOOOOO'
+            message: 'BOOOOOO #' + this.modalCount++
         });
         viewModel.getEventBus().subscribe((event) => {
             console.log('EVENT FROM MODAL', event);

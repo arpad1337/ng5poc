@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, ReflectiveInjector, ViewContainerRef, ViewChild, ComponentRef } from '@angular/core';
+import { Component, AfterViewInit, ComponentFactoryResolver, ReflectiveInjector, ViewContainerRef, ViewChild, ComponentRef } from '@angular/core';
 import { ModalService, ModalDesciptor, ModalComponent, ModalEventKey, ModalEvent } from '../modal.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ModalService, ModalDesciptor, ModalComponent, ModalEventKey, ModalEvent
   templateUrl: './modal-outlet.component.html',
   styleUrls: ['./modal-outlet.component.scss']
 })
-export class ModalOutletComponent implements OnInit {
+export class ModalOutletComponent implements AfterViewInit {
 
   modalQueue: Array<ModalDesciptor>;
   currentModal: ComponentRef<ModalComponent>;
@@ -17,16 +17,14 @@ export class ModalOutletComponent implements OnInit {
 
 
   constructor( private modalService: ModalService, private factoryResolver: ComponentFactoryResolver ) {
-    this.modalQueue = []
-  }
-
-  ngOnInit() {
+    this.modalQueue = [];
     this.modalService.getModalBus().subscribe((descriptor) => {
       this.modalQueue.push( descriptor );
-      if( !this.currentModal ) {
-        this.showNext();
-      }
     });
+  }
+
+  ngAfterViewInit() {
+    this.showNext();
   }
 
   showNext() {
@@ -42,7 +40,7 @@ export class ModalOutletComponent implements OnInit {
     const componentRef = component.instance as ModalComponent;
     componentRef.viewModel = descriptor.viewModel;
     descriptor.viewModel.getEventBus().subscribe((event: ModalEvent) => {
-      if( event.key === ModalEventKey.MODAL_CLOSED ) {
+      if( event.key === ModalEventKey.MODAL_CLOSED || event.key === ModalEventKey.MODAL_DISMISSED ) {
         this.containerRef.clear();
         component.destroy();
         this.currentModal = null;

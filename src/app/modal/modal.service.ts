@@ -52,6 +52,7 @@ export class ModalViewModel {
 }
 
 export class ModalComponent {
+  closed = false;
   _viewModel: ModalViewModel;
   get viewModel() {
     return this._viewModel;
@@ -59,17 +60,22 @@ export class ModalComponent {
   set viewModel(value: ModalViewModel) {
     this._viewModel = value;
     value.getCommandBus().subscribe((event) => {
+      if( this.closed ) {
+        return;
+      }
       if( event === ModalCommand.CLOSE ) {
         this.close();
       }
     });
   }
   close() {
+    this.closed = true;
     this.viewModel.emit({
       key: ModalEventKey.MODAL_CLOSED
     });
   }
   dismiss( payload? ) {
+    this.closed = true;
     this.viewModel.emit({
       key: ModalEventKey.MODAL_DISMISSED,
       payload: payload

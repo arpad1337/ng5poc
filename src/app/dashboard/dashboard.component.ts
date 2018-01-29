@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewContainerRef, ViewChild, ComponentRef } from '@angular/core';
 import { DynamicChartFactoryService } from '../dynamic-chart-factory.service';
-import { ModalService } from '../modal/modal.service';
+import { ModalService, ModalEvent, ModalEventKey } from '../modal/modal.service';
 
 import { PieChartComponent } from '../chart/pie-chart/pie-chart.component';
 
@@ -120,7 +120,19 @@ export class DashboardComponent implements AfterViewInit {
         const viewModel = this.modalService.createModal('test', {
             message: 'BOOOOOO #' + this.modalCount++
         });
-        viewModel.getEventBus().subscribe((event) => {
+        viewModel.getEventBus().subscribe((event: ModalEvent) => {
+            switch(event.key) {
+                case ModalEventKey.MODAL_OPENED: {
+                    break;
+                }
+                case ModalEventKey.MODAL_CLOSED: {
+
+                }
+                case ModalEventKey.MODAL_DISMISSED: {
+                    console.log(event.payload);
+                    break;
+                }
+            }
             console.log('EVENT FROM MODAL', event);
         });
 

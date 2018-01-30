@@ -1,10 +1,15 @@
-import { Component, AfterViewInit, ViewContainerRef, ViewChild, ComponentRef } from '@angular/core';
-import { DynamicChartFactoryService } from '../dynamic-chart-factory.service';
+import { Component, AfterViewInit, ViewContainerRef, ViewChild, ComponentRef, ComponentFactoryResolver } from '@angular/core';
 import { ModalService, ModalEvent, ModalEventKey } from '../modal/modal.service';
 
 import { PieChartComponent } from '../chart/pie-chart/pie-chart.component';
+import { ChartAbstractComponent } from '../chart/chart-abstract/chart-abstract.component';
 
 import { Debounce } from '../app.helper';
+import { Injector } from '@angular/core/src/di/injector';
+
+type Constructor<T> = {
+    new(...args: any[]): T; // any number and type of arguments
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -21,8 +26,8 @@ export class DashboardComponent implements AfterViewInit {
     }) viewContainerRef: ViewContainerRef
 
     constructor( 
-      private chartFactory: DynamicChartFactoryService,
-      private modalService: ModalService
+      private modalService: ModalService,
+      private factoryResolver: ComponentFactoryResolver
     ) { 
         this.data = [{
             name: 'IE',
@@ -80,12 +85,20 @@ export class DashboardComponent implements AfterViewInit {
 
     }
 
+    createComponentInHostView<ChartAbstractComponent>( ComponentClass: Constructor<ChartAbstractComponent>, parentInjector: Injector ): ComponentRef<ChartAbstractComponent> {
+        const factory = this.factoryResolver.resolveComponentFactory( ComponentClass );
+        const component = factory.create( parentInjector );
+        return component;
+    }
+
     ngAfterViewInit() {
-        const component: ComponentRef<PieChartComponent> = this.chartFactory.createComponentInHostView( PieChartComponent, this.viewContainerRef );
+        const component: ComponentRef<PieChartComponent> = this.createComponentInHostView( PieChartComponent, this.viewContainerRef.parentInjector );
         component.instance.chartConfig = this.chartConfig;
+        this.viewContainerRef.insert( component.hostView );
         console.log(this.chartConfig);
-        const component2 = this.chartFactory.createComponentInHostView( PieChartComponent, this.viewContainerRef );
+        const component2 = this.createComponentInHostView( PieChartComponent, this.viewContainerRef.parentInjector );
         component2.instance.chartConfig = this.chartConfig;
+        this.viewContainerRef.insert( component2.hostView );
         setTimeout(() => {
             this.destroyComponent( component2 );
 
@@ -123,17 +136,19 @@ export class DashboardComponent implements AfterViewInit {
         viewModel.getEventBus().subscribe((event: ModalEvent) => {
             switch(event.key) {
                 case ModalEventKey.MODAL_OPENED: {
+                    console.log('MODAL OPENED', viewModel);
                     break;
                 }
                 case ModalEventKey.MODAL_CLOSED: {
-
+                    console.log('MODAL CLOSED', viewModel);
+                    break;
                 }
                 case ModalEventKey.MODAL_DISMISSED: {
+                    console.log('MODAL DISMISSED', viewModel);
                     console.log(event.payload);
                     break;
                 }
             }
-            console.log('EVENT FROM MODAL', event);
         });
 
         setTimeout(() => {

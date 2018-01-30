@@ -20,7 +20,6 @@ import { APIService } from './api.service';
 import { UserService } from './user.service';
 import { BroadcasterService } from './broadcaster.service';
 import { LocalStorageRefService } from './local-storage-ref.service';
-import { DynamicChartFactoryService } from './dynamic-chart-factory.service';
 
 import { APIInterceptor } from './api.interceptor';
 
@@ -81,8 +80,7 @@ import { APIInterceptor } from './api.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
       multi: true
-    },
-    DynamicChartFactoryService
+    }
   ],
   entryComponents: [
     TestModalComponent

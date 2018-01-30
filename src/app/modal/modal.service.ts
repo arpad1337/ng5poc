@@ -111,8 +111,14 @@ export class ModalService {
       viewModel: model,
       component: component
     };
-    this.modalBus.next( descriptor );
+    setTimeout(() => {
+      this.dispatchModalDescriptor(descriptor);
+    }, 1);
     return model;
+  }
+
+  dispatchModalDescriptor( descriptor ) {
+    this.modalBus.next( descriptor );
   }
 
   getModalBus(): Observable<ModalDesciptor> {

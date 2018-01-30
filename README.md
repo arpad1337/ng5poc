@@ -9,7 +9,6 @@ Angular 5 Proof on Concept, starter kit
 - APIService Compositor for HttpClient
 - LocalStorageRef for internal KV storage
 - Charting module with HighChartsRef
-- Dynamic Chart Factory service
 - ModalModule with ModalService & ModalOutletComponent for dispatching modals and listening on lifecycle events
 - YARN, Webpack, TSConfig, Angular CLI
 

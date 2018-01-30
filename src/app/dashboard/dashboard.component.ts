@@ -85,18 +85,18 @@ export class DashboardComponent implements AfterViewInit {
 
   }
 
-  createComponentInHostView<ChartAbstractComponent>(ComponentClass: Constructor<ChartAbstractComponent>, parentInjector: Injector): ComponentRef<ChartAbstractComponent> {
+  createComponent<ChartAbstractComponent>(ComponentClass: Constructor<ChartAbstractComponent>, parentInjector: Injector): ComponentRef<ChartAbstractComponent> {
     const factory = this.factoryResolver.resolveComponentFactory(ComponentClass);
     const component = factory.create(parentInjector);
     return component;
   }
 
   ngAfterViewInit() {
-    const component: ComponentRef<PieChartComponent> = this.createComponentInHostView(PieChartComponent, this.viewContainerRef.parentInjector);
+    const component: ComponentRef<PieChartComponent> = this.createComponent(PieChartComponent, this.viewContainerRef.parentInjector);
     component.instance.chartConfig = this.chartConfig;
     this.viewContainerRef.insert(component.hostView);
     console.log(this.chartConfig);
-    const component2 = this.createComponentInHostView(PieChartComponent, this.viewContainerRef.parentInjector);
+    const component2 = this.createComponent(PieChartComponent, this.viewContainerRef.parentInjector);
     component2.instance.chartConfig = this.chartConfig;
     this.viewContainerRef.insert(component2.hostView);
     setTimeout(() => {

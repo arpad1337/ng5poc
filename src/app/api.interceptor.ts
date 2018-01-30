@@ -10,7 +10,10 @@ import 'rxjs/add/operator/catch';
 
 export class APIInterceptor implements HttpInterceptor {
 
-    constructor( @Inject(LocalStorageRefService) private storage: LocalStorageRefService, @Inject(BroadcasterService) private broadcaster: BroadcasterService ) {
+    constructor( 
+        @Inject(LocalStorageRefService) private storage: LocalStorageRefService, 
+        @Inject(BroadcasterService) private broadcaster: BroadcasterService
+    ) {
 
     }
 

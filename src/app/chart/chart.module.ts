@@ -4,6 +4,7 @@ import * as Highcharts from 'highcharts';
 
 import { HighchartsRefService } from './highcharts-ref.service';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
   imports: [
@@ -15,10 +16,11 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
       return HighchartsRefService.createRef( Highcharts );
     }
   }],
-  declarations: [ PieChartComponent ],
-  entryComponents: [ PieChartComponent ],  
+  declarations: [ PieChartComponent, GraphComponent ],
+  entryComponents: [ PieChartComponent, GraphComponent ],
   exports: [
-    PieChartComponent
+    PieChartComponent,
+    GraphComponent
   ]
 })
 export class ChartModule {

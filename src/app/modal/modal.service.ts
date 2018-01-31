@@ -59,14 +59,14 @@ export class ModalComponent {
   get viewModel(): ModalViewModel {
     return this._viewModel;
   }
-  
+
   set viewModel(value: ModalViewModel) {
     this._viewModel = value;
-    value.getCommandBus().subscribe((event) => {
+    value.getCommandBus().subscribe((command: ModalCommand) => {
       if (this.closed) {
         return;
       }
-      if (event === ModalCommand.CLOSE) {
+      if (command === ModalCommand.CLOSE) {
         this.close();
       }
     });

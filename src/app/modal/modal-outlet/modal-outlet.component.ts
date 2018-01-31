@@ -18,7 +18,7 @@ export class ModalOutletComponent implements AfterViewInit {
 
   constructor(private modalService: ModalService, private factoryResolver: ComponentFactoryResolver) {
     this.modalQueue = [];
-    this.modalService.getModalBus().subscribe((descriptor) => {
+    this.modalService.getModalBus().subscribe((descriptor: ModalDesciptor) => {
       this.modalQueue.push(descriptor);
       if (!this.currentModal) {
         this.showNext();

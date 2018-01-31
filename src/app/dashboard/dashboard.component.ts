@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewContainerRef, ViewChild, ComponentRef, ComponentFactoryResolver } from '@angular/core';
 import { ModalService, ModalEvent, ModalEventKey } from '../modal/modal.service';
+import { LoggerService } from '../logger.service';
 
 import { PieChartComponent } from '../chart/pie-chart/pie-chart.component';
 import { ChartAbstractComponent } from '../chart/chart-abstract/chart-abstract.component';
@@ -8,7 +9,7 @@ import { Debounce } from '../app.helper';
 import { Injector } from '@angular/core/src/di/injector';
 
 type Constructor<T> = {
-  new(...args: any[]): T; // any number and type of arguments
+  new(...args: any[]): T;
 }
 
 @Component({
@@ -27,7 +28,8 @@ export class DashboardComponent implements AfterViewInit {
 
   constructor(
     private modalService: ModalService,
-    private factoryResolver: ComponentFactoryResolver
+    private factoryResolver: ComponentFactoryResolver,
+    private logger: LoggerService
   ) {
     this.data = [{
       name: 'IE',
@@ -136,16 +138,16 @@ export class DashboardComponent implements AfterViewInit {
     viewModel.getEventBus().subscribe((event: ModalEvent) => {
       switch (event.key) {
         case ModalEventKey.MODAL_OPENED: {
-          console.log('MODAL OPENED', viewModel);
+          this.logger.log('MODAL OPENED', viewModel);
           break;
         }
         case ModalEventKey.MODAL_CLOSED: {
-          console.log('MODAL CLOSED', viewModel);
+          this.logger.log('MODAL CLOSED', viewModel);
           break;
         }
         case ModalEventKey.MODAL_DISMISSED: {
-          console.log('MODAL DISMISSED', viewModel);
-          console.log(event.payload);
+          this.logger.log('MODAL DISMISSED', viewModel);
+          this.logger.log(event.payload);
           break;
         }
       }

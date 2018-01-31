@@ -20,6 +20,7 @@ import { APIService } from './api.service';
 import { UserService } from './user.service';
 import { BroadcasterService } from './broadcaster.service';
 import { LocalStorageRefService } from './local-storage-ref.service';
+import { LoggerService } from './logger.service';
 
 import { APIInterceptor } from './api.interceptor';
 
@@ -80,6 +81,12 @@ import { APIInterceptor } from './api.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
       multi: true
+    },
+    {
+      provide: LoggerService,
+      useFactory() {
+        return LoggerService.createService( console );
+      }
     }
   ],
   entryComponents: [

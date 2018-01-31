@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 type Constructor<T> = {
-  new(...args: any[]): T; // any number and type of arguments
+  new(...args: any[]): T;
 }
 
 export enum ModalEventKey {
@@ -27,60 +27,66 @@ export class ModalViewModel {
   commandBus: Subject<ModalCommand>;
   payload: any;
 
-  constructor( payload?: any ) {
+  constructor(payload?: any) {
     this.eventBus = new Subject<ModalEvent>();
     this.commandBus = new Subject<ModalCommand>();
     this.payload = payload;
   }
 
-  close() {
+  close(): void {
     this.commandBus.next(ModalCommand.CLOSE);
   }
 
-  emit( event: ModalEvent ) {
-    this.eventBus.next( event );
+  emit(event: ModalEvent): void {
+    this.eventBus.next(event);
   }
 
   getEventBus(): Observable<ModalEvent> {
     return this.eventBus.asObservable();
   }
 
-  getCommandBus() {
+  getCommandBus(): Observable<ModalCommand> {
     return this.commandBus.asObservable();
   }
 
 }
 
 export class ModalComponent {
+
   closed = false;
   _viewModel: ModalViewModel;
-  get viewModel() {
+
+  get viewModel(): ModalViewModel {
     return this._viewModel;
   }
+  
   set viewModel(value: ModalViewModel) {
     this._viewModel = value;
     value.getCommandBus().subscribe((event) => {
-      if( this.closed ) {
+      if (this.closed) {
         return;
       }
-      if( event === ModalCommand.CLOSE ) {
+      if (event === ModalCommand.CLOSE) {
         this.close();
       }
     });
   }
-  close() {
+  
+  close(): void {
     this.closed = true;
     this.viewModel.emit({
       key: ModalEventKey.MODAL_CLOSED
     });
   }
-  dismiss( payload? ) {
+
+  dismiss(payload?): void {
     this.closed = true;
     this.viewModel.emit({
       key: ModalEventKey.MODAL_DISMISSED,
       payload: payload
     });
   }
+
 }
 
 export interface ModalComponentDescriptor {
@@ -99,7 +105,7 @@ export class ModalService {
   config: Map<string, Constructor<ModalComponent>>;
   modalBus: Subject<ModalDesciptor>;
 
-  constructor( config: Map<string, Constructor<ModalComponent>> ) {
+  constructor(config: Map<string, Constructor<ModalComponent>>) {
     this.config = config;
     this.modalBus = new Subject<ModalDesciptor>();
   }
@@ -117,15 +123,15 @@ export class ModalService {
     return model;
   }
 
-  dispatchModalDescriptor( descriptor ) {
-    this.modalBus.next( descriptor );
+  dispatchModalDescriptor(descriptor: ModalDesciptor): void {
+    this.modalBus.next(descriptor);
   }
 
   getModalBus(): Observable<ModalDesciptor> {
     return this.modalBus.asObservable();
   }
 
-  static createServiceWithConfig( config: Map<string, Constructor<ModalComponent>> ) {
+  static createServiceWithConfig(config: Map<string, Constructor<ModalComponent>>) {
     return new ModalService(config);
   }
 

@@ -1,9 +1,11 @@
 import { Component, AfterViewInit, ViewContainerRef, ViewChild, ComponentRef, ComponentFactoryResolver } from '@angular/core';
 import { ModalService, ModalEvent, ModalEventKey } from '../modal/modal.service';
 import { LoggerService } from '../logger.service';
+import { APIService } from '../api.service';
 
 import { PieChartComponent } from '../chart/pie-chart/pie-chart.component';
 import { ChartAbstractComponent } from '../chart/chart-abstract/chart-abstract.component';
+import { GraphComponent } from '../chart/graph/graph.component';
 
 import { Debounce } from '../app.helper';
 import { Injector } from '@angular/core/src/di/injector';
@@ -29,7 +31,8 @@ export class DashboardComponent implements AfterViewInit {
   constructor(
     private modalService: ModalService,
     private factoryResolver: ComponentFactoryResolver,
-    private logger: LoggerService
+    private logger: LoggerService,
+    private apiService: APIService
   ) {
     this.data = [{
       name: 'IE',
@@ -106,6 +109,16 @@ export class DashboardComponent implements AfterViewInit {
 
     }, 5000)
     this.changeConfig(component);
+
+    this.loadGraph();
+  }
+
+  loadGraph() {
+    return this.apiService.get('/assets/cyto_sample.json').then(sample => {
+      const component: ComponentRef<GraphComponent> = this.createComponent( GraphComponent, this.viewContainerRef.parentInjector );
+      this.viewContainerRef.insert( component.hostView );
+      component.instance.chartConfig = sample;
+    });
   }
 
   @Debounce(10000)

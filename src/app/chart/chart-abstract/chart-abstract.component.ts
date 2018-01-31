@@ -1,7 +1,7 @@
 import { Component, AfterContentInit, ElementRef, Input } from '@angular/core';
 import { HighchartsRefService } from '../highcharts-ref.service';
 
-export class ChartAbstractComponent implements AfterContentInit {
+export class ChartAbstractComponent {
 
   protected _chartConfig: any; 
   public elementRef: ElementRef;
@@ -10,10 +10,6 @@ export class ChartAbstractComponent implements AfterContentInit {
     elementRef: ElementRef
   ) {
     this.elementRef = elementRef;
-  }
-
-  ngAfterContentInit() {
-    this.render();
   }
 
   @Input() set chartConfig( value: any ) {

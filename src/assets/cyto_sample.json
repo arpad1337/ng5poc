@@ -1,0 +1,1114 @@
+{  
+   "container":"null",
+   "userPanningEnabled":false,
+   "userZoomingEnabled":false,
+   "autoungrabifyNodes":false,
+   "boxSelectionEnabled":true,
+   "layout":{  
+      "minNodeSpacing":100,
+      "name":"arbor",
+      "padding":20,
+      "animate":true,
+      "maxSimulationTime":15000,
+      "fit":true
+   },
+   "style":[  
+      {  
+         "selector":".main",
+         "css":{  
+            "font-size":11,
+            "color":"#000",
+            "text-wrap":"wrap",
+            "text-valign":"center",
+            "background-color":"#009cdf",
+            "content":"data(label)",
+            "text-halign":"center",
+            "width":"mapData(weight,113, 811, 50, 80)",
+            "height":"mapData(weight,113, 811, 50, 80)"
+         }
+      },
+      {  
+         "selector":".phrase",
+         "css":{  
+            "font-size":11,
+            "color":"#000",
+            "content":"data(id)",
+            "text-valign":"top",
+            "text-halign":"center",
+            "width":"mapData(weight,2, 60, 10, 30)",
+            "height":"mapData(weight,2, 60, 10, 30)"
+         }
+      },
+      {  
+         "selector":".edge",
+         "css":{  
+            "opacity":0.8,
+            "curve-style":"bezier",
+            "line-style":"solid",
+            "font-size":11,
+            "color":"#000",
+            "haystack-radius":1,
+            "width":2,
+            "line-color":"#9e9e9e",
+            "target-arrow-shape":"circle",
+            "source-arrow-shape":"circle",
+            "source-arrow-color":"#9e9e9e",
+            "target-arrow-color":"#9e9e9e",
+            "label":"data(value)"
+         }
+      },
+      {  
+         "selector":":parent",
+         "css":{  
+            "background-color":"#fff",
+            "background-opacity":0,
+            "border-width":3,
+            "border-color":"#009cdf",
+            "border-opacity":0,
+            "shape":"roundrectangle",
+            "content":""
+         }
+      },
+      {  
+         "selector":":selected",
+         "css":{  
+            "line-color":"black",
+            "target-arrow-color":"black",
+            "source-arrow-color":"black"
+         }
+      },
+      {  
+         "selector":".pos, .pos1, .pos2, .pos3",
+         "css":{  
+            "background-color":"#01DF74",
+            "text-valign":"top",
+            "text-halign":"center",
+            "label":"data(label)"
+         }
+      },
+      {  
+         "selector":".neg, .neg1, .neg2, .neg3",
+         "css":{  
+            "background-color":"#FA5858",
+            "text-valign":"top",
+            "text-halign":"center",
+            "label":"data(label)"
+         }
+      }
+   ],
+   "elements":{  
+      "nodes":[  
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"Galaxy",
+               "label":"GALAXY\n811\n(-18%)",
+               "weight":811,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"repedt_Galaxy",
+               "name":"repedt",
+               "label":"repedt\n9",
+               "weight":9,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"a kigyulladásra_Galaxy",
+               "name":"a kigyulladásra",
+               "label":"a kigyulladásra\n6",
+               "weight":6,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"hibátlan_Galaxy",
+               "name":"hibátlan",
+               "label":"hibátlan\n7",
+               "weight":7,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"a bizalom_Galaxy",
+               "name":"a bizalom",
+               "label":"a bizalom\n6",
+               "weight":6,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"eladó",
+               "label":"ELADÓ\n419\n(-20%)",
+               "weight":419,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"nem értek_eladó",
+               "name":"nem értek",
+               "label":"nem értek\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"hiba_eladó",
+               "name":"hiba",
+               "label":"hiba\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"kifogástalan állapotban_eladó",
+               "name":"kifogástalan állapotban",
+               "label":"kifogástalan állapotban\n3",
+               "weight":3,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"tökéletesen működik_eladó",
+               "name":"tökéletesen működik",
+               "label":"tökéletesen működik\n3",
+               "weight":3,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"okostelefon",
+               "label":"OKOSTELEFON\n284\n(-23%)",
+               "weight":284,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"lemond_okostelefon",
+               "name":"lemond",
+               "label":"lemond\n7",
+               "weight":7,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"lefizette_okostelefon",
+               "name":"lefizette",
+               "label":"lefizette\n4",
+               "weight":4,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"jó_okostelefon",
+               "name":"jó",
+               "label":"jó\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"azzal gyakorlatilag leszarozták volna_okostelefon",
+               "name":"azzal gyakorlatilag leszarozták volna",
+               "label":"azzal gyakorlatilag leszarozták volna\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"telefon",
+               "label":"TELEFON\n270\n(-12%)",
+               "weight":270,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"sajnos_telefon",
+               "name":"sajnos",
+               "label":"sajnos\n3",
+               "weight":3,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"majmolja_telefon",
+               "name":"majmolja",
+               "label":"majmolja\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"sérülés mentes_telefon",
+               "name":"sérülés mentes",
+               "label":"sérülés mentes\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"gyönyörű_telefon",
+               "name":"gyönyörű",
+               "label":"gyönyörű\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"tv",
+               "label":"TV\n172\n(-33%)",
+               "weight":172,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"sajnos_tv",
+               "name":"sajnos",
+               "label":"sajnos\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"hátrány_tv",
+               "name":"hátrány",
+               "label":"hátrány\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"jó_tv",
+               "name":"jó",
+               "label":"jó\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"jobb_tv",
+               "name":"jobb",
+               "label":"jobb\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"állapot",
+               "label":"ÁLLAPOT\n133\n(-25%)",
+               "weight":133,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"nagyon rossz_állapot",
+               "name":"nagyon rossz",
+               "label":"nagyon rossz\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"szenved-e_állapot",
+               "name":"szenved-e",
+               "label":"szenved-e\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"makulátlan_állapot",
+               "name":"makulátlan",
+               "label":"makulátlan\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"jo_állapot",
+               "name":"jo",
+               "label":"jo\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"függetlenség",
+               "label":"FÜGGETLENSÉG\n126\n(-13%)",
+               "weight":126,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"előnyben_függetlenség",
+               "name":"előnyben",
+               "label":"előnyben\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"még mindig ez a legszebb_függetlenség",
+               "name":"még mindig ez a legszebb",
+               "label":"még mindig ez a legszebb\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"képernyő",
+               "label":"KÉPERNYŐ\n121\n(-1%)",
+               "weight":121,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"nesze neked_képernyő",
+               "name":"nesze neked",
+               "label":"nesze neked\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"repedt_képernyő",
+               "name":"repedt",
+               "label":"repedt\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"pedig fullos_képernyő",
+               "name":"pedig fullos",
+               "label":"pedig fullos\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"a felturbózott_képernyő",
+               "name":"a felturbózott",
+               "label":"a felturbózott\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"gyártás",
+               "label":"GYÁRTÁS\n113\n(-3%)",
+               "weight":113,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"lefizették_gyártás",
+               "name":"lefizették",
+               "label":"lefizették\n3",
+               "weight":3,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"megsértette_gyártás",
+               "name":"megsértette",
+               "label":"megsértette\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"inspirálhatta_gyártás",
+               "name":"inspirálhatta",
+               "label":"inspirálhatta\n2",
+               "weight":2,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"volt kiemelkedő_gyártás",
+               "name":"volt kiemelkedő",
+               "label":"volt kiemelkedő\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"main",
+            "data":{  
+               "id":"operációs rendszer",
+               "label":"OPERÁCIÓS RENDSZER\n114\n(-27%)",
+               "weight":114,
+               "minValue":112,
+               "maxValue":811
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"kellene tudni mi a gebasz_operációs rendszer",
+               "name":"kellene tudni mi a gebasz",
+               "label":"kellene tudni mi a gebasz\n3",
+               "weight":3,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase neg",
+            "data":{  
+               "id":"ezzel sajnos_operációs rendszer",
+               "name":"ezzel sajnos",
+               "label":"ezzel sajnos\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"támogatja_operációs rendszer",
+               "name":"támogatja",
+               "label":"támogatja\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         },
+         {  
+            "classes":"phrase pos",
+            "data":{  
+               "id":"javítják_operációs rendszer",
+               "name":"javítják",
+               "label":"javítják\n1",
+               "weight":1,
+               "minValue":1,
+               "maxValue":60
+            }
+         }
+      ],
+      "edges":[  
+         {  
+            "data":{  
+               "id":"Galaxy>eladó_edge",
+               "source":"Galaxy",
+               "target":"eladó"
+            },
+            "value":195
+         },
+         {  
+            "data":{  
+               "id":"repedt>Galaxy_edge",
+               "source":"repedt_Galaxy",
+               "target":"Galaxy"
+            },
+            "value":9
+         },
+         {  
+            "data":{  
+               "id":"a kigyulladásra>Galaxy_edge",
+               "source":"a kigyulladásra_Galaxy",
+               "target":"Galaxy"
+            },
+            "value":6
+         },
+         {  
+            "data":{  
+               "id":"hibátlan>Galaxy_edge",
+               "source":"hibátlan_Galaxy",
+               "target":"Galaxy"
+            },
+            "value":7
+         },
+         {  
+            "data":{  
+               "id":"a bizalom>Galaxy_edge",
+               "source":"a bizalom_Galaxy",
+               "target":"Galaxy"
+            },
+            "value":6
+         },
+         {  
+            "data":{  
+               "id":"eladó>Galaxy_edge",
+               "source":"eladó",
+               "target":"Galaxy"
+            },
+            "value":195
+         },
+         {  
+            "data":{  
+               "id":"nem értek>eladó_edge",
+               "source":"nem értek_eladó",
+               "target":"eladó"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"hiba>eladó_edge",
+               "source":"hiba_eladó",
+               "target":"eladó"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"kifogástalan állapotban>eladó_edge",
+               "source":"kifogástalan állapotban_eladó",
+               "target":"eladó"
+            },
+            "value":3
+         },
+         {  
+            "data":{  
+               "id":"tökéletesen működik>eladó_edge",
+               "source":"tökéletesen működik_eladó",
+               "target":"eladó"
+            },
+            "value":3
+         },
+         {  
+            "data":{  
+               "id":"okostelefon>gyártás_edge",
+               "source":"okostelefon",
+               "target":"gyártás"
+            },
+            "value":45
+         },
+         {  
+            "data":{  
+               "id":"lemond>okostelefon_edge",
+               "source":"lemond_okostelefon",
+               "target":"okostelefon"
+            },
+            "value":7
+         },
+         {  
+            "data":{  
+               "id":"lefizette>okostelefon_edge",
+               "source":"lefizette_okostelefon",
+               "target":"okostelefon"
+            },
+            "value":4
+         },
+         {  
+            "data":{  
+               "id":"jó>okostelefon_edge",
+               "source":"jó_okostelefon",
+               "target":"okostelefon"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"azzal gyakorlatilag leszarozták volna>okostelefon_edge",
+               "source":"azzal gyakorlatilag leszarozták volna_okostelefon",
+               "target":"okostelefon"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"telefon>Galaxy_edge",
+               "source":"telefon",
+               "target":"Galaxy"
+            },
+            "value":85
+         },
+         {  
+            "data":{  
+               "id":"sajnos>telefon_edge",
+               "source":"sajnos_telefon",
+               "target":"telefon"
+            },
+            "value":3
+         },
+         {  
+            "data":{  
+               "id":"majmolja>telefon_edge",
+               "source":"majmolja_telefon",
+               "target":"telefon"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"sérülés mentes>telefon_edge",
+               "source":"sérülés mentes_telefon",
+               "target":"telefon"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"gyönyörű>telefon_edge",
+               "source":"gyönyörű_telefon",
+               "target":"telefon"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"tv>eladó_edge",
+               "source":"tv",
+               "target":"eladó"
+            },
+            "value":27
+         },
+         {  
+            "data":{  
+               "id":"sajnos>tv_edge",
+               "source":"sajnos_tv",
+               "target":"tv"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"hátrány>tv_edge",
+               "source":"hátrány_tv",
+               "target":"tv"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"jó>tv_edge",
+               "source":"jó_tv",
+               "target":"tv"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"jobb>tv_edge",
+               "source":"jobb_tv",
+               "target":"tv"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"állapot>eladó_edge",
+               "source":"állapot",
+               "target":"eladó"
+            },
+            "value":74
+         },
+         {  
+            "data":{  
+               "id":"nagyon rossz>állapot_edge",
+               "source":"nagyon rossz_állapot",
+               "target":"állapot"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"szenved-e>állapot_edge",
+               "source":"szenved-e_állapot",
+               "target":"állapot"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"makulátlan>állapot_edge",
+               "source":"makulátlan_állapot",
+               "target":"állapot"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"jo>állapot_edge",
+               "source":"jo_állapot",
+               "target":"állapot"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"függetlenség>Galaxy_edge",
+               "source":"függetlenség",
+               "target":"Galaxy"
+            },
+            "value":60
+         },
+         {  
+            "data":{  
+               "id":"előnyben>függetlenség_edge",
+               "source":"előnyben_függetlenség",
+               "target":"függetlenség"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"még mindig ez a legszebb>függetlenség_edge",
+               "source":"még mindig ez a legszebb_függetlenség",
+               "target":"függetlenség"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"képernyő>eladó_edge",
+               "source":"képernyő",
+               "target":"eladó"
+            },
+            "value":29
+         },
+         {  
+            "data":{  
+               "id":"nesze neked>képernyő_edge",
+               "source":"nesze neked_képernyő",
+               "target":"képernyő"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"repedt>képernyő_edge",
+               "source":"repedt_képernyő",
+               "target":"képernyő"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"pedig fullos>képernyő_edge",
+               "source":"pedig fullos_képernyő",
+               "target":"képernyő"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"a felturbózott>képernyő_edge",
+               "source":"a felturbózott_képernyő",
+               "target":"képernyő"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"gyártás>okostelefon_edge",
+               "source":"gyártás",
+               "target":"okostelefon"
+            },
+            "value":45
+         },
+         {  
+            "data":{  
+               "id":"lefizették>gyártás_edge",
+               "source":"lefizették_gyártás",
+               "target":"gyártás"
+            },
+            "value":3
+         },
+         {  
+            "data":{  
+               "id":"megsértette>gyártás_edge",
+               "source":"megsértette_gyártás",
+               "target":"gyártás"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"inspirálhatta>gyártás_edge",
+               "source":"inspirálhatta_gyártás",
+               "target":"gyártás"
+            },
+            "value":2
+         },
+         {  
+            "data":{  
+               "id":"volt kiemelkedő>gyártás_edge",
+               "source":"volt kiemelkedő_gyártás",
+               "target":"gyártás"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"operációs rendszer>okostelefon_edge",
+               "source":"operációs rendszer",
+               "target":"okostelefon"
+            },
+            "value":22
+         },
+         {  
+            "data":{  
+               "id":"kellene tudni mi a gebasz>operációs rendszer_edge",
+               "source":"kellene tudni mi a gebasz_operációs rendszer",
+               "target":"operációs rendszer"
+            },
+            "value":3
+         },
+         {  
+            "data":{  
+               "id":"ezzel sajnos>operációs rendszer_edge",
+               "source":"ezzel sajnos_operációs rendszer",
+               "target":"operációs rendszer"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"támogatja>operációs rendszer_edge",
+               "source":"támogatja_operációs rendszer",
+               "target":"operációs rendszer"
+            },
+            "value":1
+         },
+         {  
+            "data":{  
+               "id":"javítják>operációs rendszer_edge",
+               "source":"javítják_operációs rendszer",
+               "target":"operációs rendszer"
+            },
+            "value":1
+         }
+      ]
+   },
+   "isEmpty":false,
+   "neticle":{  
+      "profileID":4,
+      "reportID":2848,
+      "chartID":32854,
+      "clientID":1,
+      "chartApp":"mention_graph",
+      "chartType":"graph",
+      "chart":"cytoscape",
+      "chartQuery":{  
+         "id":32854,
+         "report_id":2848,
+         "app":"mention_graph",
+         "type":"graph",
+         "chart":"cytoscape",
+         "use_global":null,
+         "start_date":1516752000000,
+         "end_date":1517356799999,
+         "date_period":"30",
+         "date_period_offset":"0",
+         "interval_type":"",
+         "interval":"1440",
+         "width":"",
+         "height":"",
+         "row":"",
+         "column":"",
+         "page":"",
+         "show_title":"0",
+         "show_interval":"0",
+         "show_keywords":"0",
+         "show_events":"0",
+         "show_description":"0",
+         "show_flags":"0",
+         "show_explanation":"0",
+         "show_tiny_values":"0",
+         "show_relative":"0",
+         "show_legend":"0",
+         "primary_dimension":"amount",
+         "secondary_dimension":"source",
+         "number_of_values":"10",
+         "filter_phrases":"",
+         "filter_tags":"",
+         "filter_urls":"",
+         "filter_domains":"",
+         "filter_authors":"",
+         "sources":"[\"all\"]",
+         "polarity":"[\"all\"]",
+         "gender":"[\"all\"]",
+         "cumulate":"0",
+         "show_change_in_values":"1",
+         "show_percentage":"0",
+         "include_own":"[\"fb_page\",\"fb_group\",\"fb_event\",\"user\",\"tumblr\",\"yt_channel\",\"yt_video\",\"app\",\"forum\"]",
+         "exclude_own":"[]",
+         "only_own":"[]",
+         "selected_keywords":"[\"apple\",\"samsung\",\"nokia\"]",
+         "selected_aspects":"[]",
+         "polarity_merged":"0",
+         "lang":"en",
+         "sort_by":"date_asc",
+         "order":"[\"27096\",\"27097\",\"27098\",\"27101\",\"27662\",\"27693\",\"27793\",\"27867\",\"28133\",\"28134\",\"28304\",\"29738\",\"30566\",\"30569\",\"30571\",\"31000\",\"30982\"]",
+         "period_type":"last7days",
+         "label":"Mention graph - What are the most important topics and connections in the mentions?",
+         "profile_id":4,
+         "client_id":1,
+         "client":"hu_neticledemo",
+         "profile":"techszektorpldv2",
+         "details":{  
+            "clientID":1,
+            "clientName":"hu_neticledemo",
+            "clientLabel":"Neticle demo",
+            "profileID":4,
+            "profileName":"techszektorpldv2",
+            "profileLabel":"Tech sector"
+         },
+         "locale":"en",
+         "keywordsDetails":{  
+            "nokia":{  
+               "id":90,
+               "keywordgroup_id":1261,
+               "keyword":"nokia",
+               "valid":1,
+               "label":"Nokia",
+               "own":0,
+               "color":"31e731"
+            },
+            "samsung":{  
+               "id":89,
+               "keywordgroup_id":1261,
+               "keyword":"samsung",
+               "valid":1,
+               "label":"Samsung",
+               "own":0,
+               "color":"3c4ac2"
+            },
+            "apple":{  
+               "id":88,
+               "keywordgroup_id":1261,
+               "keyword":"apple",
+               "valid":1,
+               "label":"Apple",
+               "own":1,
+               "color":"387a06"
+            }
+         }
+      }
+   },
+   "dd_order":0
+}

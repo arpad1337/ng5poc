@@ -13,4 +13,8 @@ export class APIService {
     return this.httpClient.get('/assets/dummy.json').toPromise();
   }
 
+  get(...args: Array<any>) {
+    return this.httpClient.get.apply(this.httpClient, args).toPromise();
+  }
+
 }
